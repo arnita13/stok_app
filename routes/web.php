@@ -24,10 +24,6 @@ Route::middleware(['auth', 'cekLevel:superadmin,admin'])->group(function(){
  */
     Route::get('/dashboard', [dasboardController::class, 'index']);
 
-     /**
-      * 
-      */
-
 
 /**
  * ini routing untuk pegawai controller
@@ -70,8 +66,9 @@ Route::middleware(['auth', 'cekLevel:superadmin,admin'])->group(function(){
          */
         Route::controller(suplierController::class)->group(function(){
             Route::get('/suplier', 'index');
+            Route::get('/suplier/add', 'create');
         });
 
 
-        
+
 });
