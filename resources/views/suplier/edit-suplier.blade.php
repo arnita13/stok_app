@@ -28,7 +28,7 @@
                                 <div class="col">
                                     <div class="form-outline mb-4">
                                         <label class="form-label" for="nama_suplier">Nama</label>
-                                        <input type="text" value="{{ old('nama_suplier') }}" name="nama_suplier" id="nama_suplier" class="form-control @error('nama_suplier') is-invalid @enderror" placeholder="Nama Suplier..."/>
+                                        <input type="text" value="{{ old('nama_suplier', $getSuplier->nama_suplier) }}" name="nama_suplier" id="nama_suplier" class="form-control @error('nama_suplier') is-invalid @enderror" placeholder="Nama Suplier..."/>
                                         @error('nama_suplier')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -39,7 +39,7 @@
                                 <div class="col">
                                     <div class="form-outline mb-4">
                                         <label class="form-label" for="email">Email</label>
-                                        <input type="email" value="{{ old('email') }}" name="email" id="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email Suplier"/>
+                                        <input type="email" value="{{ old('email', $getSuplier->email) }}" name="email" id="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email Suplier"/>
                                         @error('email')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -53,7 +53,7 @@
                                 <div class="col">
                                     <div class="form-outline mb-4">
                                         <label class="form-label" for="alamat">Alamat</label>
-                                        <input type="text" value="{{ old('alamat') }}" name="alamat" id="alamat" class="form-control @error('alamat') is-invalid @enderror" placeholder="Alamat Suplier..."/>
+                                        <input type="text" value="{{ old('alamat', $getSuplier->alamat) }}" name="alamat" id="alamat" class="form-control @error('alamat') is-invalid @enderror" placeholder="Alamat Suplier..."/>
                                         @error('alamat')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -64,7 +64,7 @@
                                 <div class="col">
                                     <div class="form-outline mb-4">
                                         <label class="form-label" for="telp">No. Telepon</label>
-                                        <input type="text" value="{{ old('telp') }}" name="telp" id="telp" class="form-control @error('telp') is-invalid @enderror" placeholder="Telepon Suplier"/>
+                                        <input type="text" value="{{ old('telp', $getSuplier->telp) }}" name="telp" id="telp" class="form-control @error('telp') is-invalid @enderror" placeholder="Telepon Suplier"/>
                                         @error('telp')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -78,7 +78,7 @@
                                 <div class="col">
                                     <div class="form-outline mb-4">
                                         <label class="form-label" for="tgl_terdaftar">Tanggal Terdaftar</label>
-                                        <input type="date" value="{{ old('tgl_terdaftar') }}" name="tgl_terdaftar" id="tgl_terdaftar" class="form-control @error('tgl_terdaftar') is-invalid @enderror" placeholder="Tanggal Terdaftar Suplier"/>
+                                        <input type="date" value="{{ old('tgl_terdaftar', $getSuplier->tgl_terdaftar) }}" name="tgl_terdaftar" id="tgl_terdaftar" class="form-control @error('tgl_terdaftar') is-invalid @enderror" placeholder="Tanggal Terdaftar Suplier"/>
                                         @error('tgl_terdaftar')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -90,7 +90,11 @@
                                     <div class="form-outline">
                                         <label class="form-label" for="status">Status Suplier</label>
                                         <div class="input-group">
-                                            {{-- Select Option --}}
+                                           <select value="{{old('status' ?? '')}}" name="status" class="form-control @error('status') is invalid @enderror">
+                                              <option value="">pilih status</option>
+                                              <option value="Aktif"{{old('status', $getSuplier->status) == 'Aktif' ? 'seleted' : ''}}>Aktif</option>
+                                              <option value="Tidak Aktif"{{old('status', $getSuplier->status) == 'Tidak Aktif' ? 'seleted' : ''}}>Tidak Aktif</option>
+                                           </select>
                                           <span class="input-group-text"><i class="bi bi-caret-down-fill"></i></span>
                                         </div>
                                         @error('status')
