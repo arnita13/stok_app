@@ -3,7 +3,9 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\dasboardController;
 use App\Http\Controllers\pegawaiController;
+use App\Http\Controllers\pelangganController;
 use App\Http\Controllers\suplierController;
+use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
 
 
@@ -72,7 +74,16 @@ Route::middleware(['auth', 'cekLevel:superadmin,admin'])->group(function(){
 
             Route::get('suplier/edit/{id}', 'edit');
             Route::post('suplier/edit/{id}', 'update');
+            Route::get('suplier/{id}', 'destroy');
 
+
+        });
+
+        Route::controller(pelangganController::class)->group(function(){
+            Route::get('/pelanggan', 'index');
+
+            Route::get('/pelanggan/add', 'create');
+            Route::post('/pelanggan/add', 'store');
         });
 
 
