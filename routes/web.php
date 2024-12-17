@@ -1,12 +1,14 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\barangkeluarController;
 use App\Http\Controllers\barangMasukController;
 use App\Http\Controllers\dasboardController;
 use App\Http\Controllers\pegawaiController;
 use App\Http\Controllers\pelangganController;
 use App\Http\Controllers\stokController;
 use App\Http\Controllers\suplierController;
+use App\Models\barangkeluar;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
 
@@ -83,6 +85,16 @@ Route::middleware(['auth', 'cekLevel:superadmin,admin'])->group(function(){
       /**
        * ini route barang keluar
        */
+      Route::controller(barangkeluarController::class)->group(function(){
+
+        Route::get('/barang-keluar', 'index');
+        
+        Route::get('/barang-keluar/add', 'create');
+        Route::post('/barang-keluar/add', 'store');
+
+
+
+      });
 
 
        /**
